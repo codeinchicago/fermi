@@ -1,0 +1,36 @@
+import tkinter as tk
+import random
+import math
+
+#-----------------------------------------------
+#MAIN INPUT
+
+#Scale (radio bubble diameter) in light years:
+SCALE = 225 #Enter 225 to see Earth's radio bubble
+
+#Number of advanced civilizations from the Drake equation
+NUM_CIVS = 15600000
+
+#Set up display canvas
+
+root = tk.Tk()
+root.title("Milky Way galaxy")
+c = tk.Canvas(root, width=1000, height = 800, bg = 'black')
+c.grid()
+c.configure(scrollregion = (-500, -400, 500, 400))
+
+#Milky Way dimensions
+DISC_RADIUS = 50000
+DISC_HEIGHT = 1000
+DISC_VOL = math.pi * DISC_RADIUS**2 * DISC_HEIGHT
+
+def scale_galaxy():
+    #Scale galaxy dimensions based on radio bubble size (scale).
+    disc_radius_scaled = round(DISC_RADIUS / SCALE)
+    bubble_vol = 4/3 * math.pi * (SCALE /2)**3
+    disc_vol_scaled = DISC_VOL/bubble_vol
+    return disc_radius_scaled, disc_vol_scaled
+
+def detect_prob(disc_vol_scaled):
+    #Calculate probability of galactic civilizations detecting each other.
+    pass
